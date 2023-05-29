@@ -13,6 +13,16 @@ resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' 
   scope: resourceGroup(identityResourceGroup)
 }
 
+module roles 'roles.bicep' = {
+  name: 'roles'
+  scope: resourceGroup(identityResourceGroup)
+  params: {
+    identityName: identity.name
+    identityResourceGroup: identityResourceGroup
+  }
+  
+}
+
 resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
   name: containerAppName
   location: location

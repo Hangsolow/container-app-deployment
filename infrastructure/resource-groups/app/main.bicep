@@ -25,6 +25,8 @@ resource managedIdentityContainerApp 'Microsoft.ManagedIdentity/userAssignedIden
   location: location
 }
 
+
+
 module containerApp 'modules/containerApp.bicep' = {
   name: 'container app'
   params: {
